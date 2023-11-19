@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: onboarding-banking
-  title: Banking Demo
+  title: "Banking Demo Onboarding"
   description: Setup Demo Environment for Banking Demo
   tags:
     - banking-demo
