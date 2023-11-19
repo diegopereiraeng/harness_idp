@@ -33,6 +33,7 @@ spec:
           type: string
           title: Trigger Pipelines
           description: Should it Trigger Pipelines? (true/false)
+          enum: ["true", "false"]
           default: 'true'
         token:
           title: Harness Token
@@ -44,7 +45,7 @@ spec:
       name: Log Message
       action: debug:log
       input:
-        message: 'Hello, ${{ parameters.gitUser }}!'
+        message: 'Hello, ${{ parameters.gitUser }}!\n\n Starting your Harness Banking Demo App Environment'
     - id: trigger
       name: Onboarding Harness Banking Demo
       action: trigger:harness-custom-pipeline
@@ -54,6 +55,11 @@ spec:
           gitUser: ${{ parameters.gitUser }}
           triggerPipelines: ${{ parameters.triggerPipelines }}
         apikey: ${{ parameters.token }}
+    - id: log-message-finished
+      name: Log Message 2
+      action: debug:log
+      input:
+        message: 'Thank you! You are ready to start!'
   output:
     links:
       - title: Pipeline Details
