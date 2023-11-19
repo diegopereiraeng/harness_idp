@@ -7,6 +7,10 @@ metadata:
   tags:
     - banking-demo
     - javascript
+    - platform-demo
+    - feature-flags
+    - ci
+    - cd
 spec:
   owner: diego.pereira@harness.io
   type: service
