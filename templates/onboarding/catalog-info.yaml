@@ -34,6 +34,11 @@ spec:
           title: Trigger Pipelines
           description: Should it Trigger Pipelines? (true/false)
           default: 'true'
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
   steps:
     - id: log-message
       name: Log Message
@@ -48,6 +53,7 @@ spec:
         inputset:
           gitUser: ${{ parameters.gitUser }}
           triggerPipelines: ${{ parameters.triggerPipelines }}
+        apikey: ${{ parameters.token }}
   output:
     links:
       - title: Pipeline Details
