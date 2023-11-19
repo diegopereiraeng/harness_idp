@@ -45,7 +45,12 @@ spec:
       name: Log Message
       action: debug:log
       input:
-        message: 'Hello, ${{ parameters.gitUser }}!\n\n Starting your Harness Banking Demo App Environment'
+        message: 'Hello, ${{ parameters.gitUser }}!'
+    - id: log-message-2
+      name: Log Message 2
+      action: debug:log
+      input:
+        message: 'Starting your Harness Banking Demo App Environment'
     - id: trigger
       name: Onboarding Harness Banking Demo
       action: trigger:harness-custom-pipeline
@@ -56,7 +61,7 @@ spec:
           triggerPipelines: ${{ parameters.triggerPipelines }}
         apikey: ${{ parameters.token }}
     - id: log-message-finished
-      name: Log Message 2
+      name: Log Message 3
       action: debug:log
       input:
         message: 'Thank you! You are ready to start!'
