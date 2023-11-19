@@ -1,13 +1,15 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: onboarding_banking
+  name: onboarding-banking
   title: Banking Demo
   description: Setup Demo Environment for Banking Demo
+  tags:
+    - banking-demo
+    - javascript
 spec:
-  owner: backstage/techdocs-core
+  owner: diego.pereira@harness.io
   type: service
-
   parameters:
     - title: You are about to say hello to your first Backstage Template
       required:
@@ -15,10 +17,13 @@ spec:
       properties:
         name:
           type: string
-
   steps:
     - id: log-message
       name: Log Message
       action: debug:log
       input:
         message: 'Hello, ${{ parameters.name }}!'
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ parameters.name }}
