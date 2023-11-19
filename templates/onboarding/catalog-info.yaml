@@ -19,19 +19,38 @@ spec:
   owner: diego.pereira@harness.io
   type: service
   parameters:
-    - title: You are about to say hello to your first Backstage Template
+    - title: Onboarding your Harness Banking Demo App Environment
       required:
-        - name
+        - gitUser
+        - triggerPipelines
       properties:
-        name:
+        gitUser:
           type: string
+          title: GitHub User
+          description: GitHub User
+          default: ''
+        triggerPipelines:
+          type: string
+          title: Trigger Pipelines
+          description: Should it Trigger Pipelines? (true/false)
+          default: 'true'
   steps:
     - id: log-message
       name: Log Message
       action: debug:log
       input:
-        message: 'Hello, ${{ parameters.name }}!'
+        message: 'Hello, ${{ parameters.gitUser }}!'
+    - id: trigger
+      name: Onboarding Harness Banking Demo
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/cd/orgs/default/projects/GIT_FLOW_DEMO/pipelines/Onboarding_Pipeline/pipeline-studio/?repoIdentifier=gitopsdemo&branch=main'
+        inputset:
+          gitUser: ${{ parameters.gitUser }}
+          triggerPipelines: ${{ parameters.triggerPipelines }}
   output:
     links:
       - title: Pipeline Details
-        url: ${{ parameters.name }}
+        url: ${{ steps.trigger.output.PipelineUrl }}
+      - title: GitUser
+        url: ${{ parameters.gitUser }}
