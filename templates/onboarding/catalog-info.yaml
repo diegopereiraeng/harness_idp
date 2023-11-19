@@ -11,6 +11,10 @@ metadata:
     - feature-flags
     - ci
     - cd
+  links:
+    - url: https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/home/orgs/default/projects/GIT_FLOW_DEMO/details
+      title: Project Details
+      icon: dashboard
 spec:
   owner: diego.pereira@harness.io
   type: service
