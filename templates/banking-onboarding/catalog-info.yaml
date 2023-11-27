@@ -15,7 +15,7 @@ spec:
     - title: Banking Service Details
       required:
         - name
-        - repository
+        - repoUrl
         - isPublish
       properties:
         name:
