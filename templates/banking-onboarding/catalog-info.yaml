@@ -12,14 +12,14 @@ spec:
   owner: diego.pereira@harness.io
   type: service
   parameters:
-    - title: Django Service Details
+    - title: Banking Service Details
       required:
         - name
         - repository
         - isPublish
       properties:
         name:
-          title: Name of your Banking Service / Repository
+          title: Name of your Banking Service - Repository
           type: string
           description: Unique name of the service
         repoUrl:
