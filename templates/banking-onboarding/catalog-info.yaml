@@ -100,7 +100,7 @@ spec:
           cache: ${{ parameters.cache }}
           lint: ${{ parameters.lint }}
           name: ${{ parameters.name }}
-          repository: ${{ parameters.repository }}
+          repository: ${{ parameters.repoUrl }}
   # Outputs are displayed to the user after a successful execution of the template.
   output:
     links:
