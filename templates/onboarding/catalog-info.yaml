@@ -50,7 +50,7 @@ spec:
       name: Log Message 2
       action: debug:log
       input:
-        message: 'Starting your Harness Banking Demo App Environment'
+        message: 'Creating your Harness Banking Demo App Environment'
     - id: trigger
       name: Onboarding Harness Banking Demo
       action: trigger:harness-custom-pipeline
