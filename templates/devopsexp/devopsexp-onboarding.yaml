@@ -20,6 +20,11 @@ spec:
           title: Name of your Banking Service - Repository
           type: string
           description: Unique name of the service
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
     - title: Service Infrastructure Details
       required:
         - provider
@@ -55,11 +60,6 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
   steps:
     # Call Harness Pipelines to create the service infra and other things
     - id: trigger
