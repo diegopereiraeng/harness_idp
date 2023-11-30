@@ -23,9 +23,12 @@ spec:
           type: string
           description: Unique name of the service
         repoUrl:
-          title: URL of the Repository
+          title: Repository Location
           type: string
-          description: This will be the name of Repository on Github
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
         isPublish:
           title: Do you wish to publish the internal registry?
           type: boolean
