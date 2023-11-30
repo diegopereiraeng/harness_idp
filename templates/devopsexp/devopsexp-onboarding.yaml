@@ -1,37 +1,25 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: bankingservicev3
-  title: Create a Banking Service
-  description: An template for the scaffolder that creates a Banking service
+  name: devopsexp
+  title: Onboarding DevOps Experience
+  description: Demo new repo
   tags:
-    - django
+    - devopsexp
     - harness
-    - banking-demo
+    - demo
 spec:
   owner: diego.pereira@harness.io
   type: service
   parameters:
-    - title: Banking Service Details
+    - title: Repo Detail
       required:
         - name
-        - repoUrl
-        - isPublish
       properties:
         name:
           title: Name of your Banking Service - Repository
           type: string
           description: Unique name of the service
-        repoUrl:
-          title: Repository Location
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
-        isPublish:
-          title: Do you wish to publish the internal registry?
-          type: boolean
     - title: Service Infrastructure Details
       required:
         - provider
@@ -70,15 +58,14 @@ spec:
   steps:
     # Call Harness Pipelines to create the service infra and other things
     - id: trigger
-      name: Creating Your Infra for the Service
+      name: Creating Your repo for the Service
       action: trigger:harness-custom-pipeline
       input:
-        url: 'https://app.harness.io/ng/#/account/dh-iBL35SqqpuqJF0yDjpQ/home/orgs/default/projects/CIQuickstart/pipelines/fetchfromcustom/pipeline-studio/?storeType=INLINE'
+        url: 'https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/ci/orgs/SE_Sandbox/projects/DevOps_Experience/pipelines/Onboard_new_Service/pipeline-studio/?storeType=INLINE'
         inputset:
           provider: ${{ parameters.provider }}
           db: ${{ parameters.db }}
           cache: ${{ parameters.cache }}
           lint: ${{ parameters.lint }}
           name: ${{ parameters.name }}
-          repository: ${{ parameters.repoUrl }}
 
