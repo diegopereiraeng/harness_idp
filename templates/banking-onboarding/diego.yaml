@@ -14,28 +14,20 @@ spec:
   parameters:
     - title: DnB Service Details
       required:
-        - name
-        - repoUrl
+        - gitUser
+        - triggerPipelines
       properties:
-        name:
-          title: Name of your DnB Service - Repository
+        gitUser:
           type: string
-          description: Unique name of the service
-        repoUrl:
-          title: Repository Location
+          title: GitHub User
+          description: GitHub User
+          default: ''
+        triggerPipelines:
           type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
-        isPublish:
-          title: Do you wish to publish the internal registry?
-          type: boolean
+          title: Trigger Pipelines
+          description: Should it Trigger Pipelines? (true/false)
+          enum: ["true", "false"]
+          default: 'true'
     - title: Service Infrastructure Details
       required:
         - provider
