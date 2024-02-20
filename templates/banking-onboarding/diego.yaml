@@ -28,6 +28,11 @@ spec:
           description: Should it Trigger Pipelines? (true/false)
           enum: ["true", "false"]
           default: 'true'
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
     - title: Service Infrastructure Details
       required:
         - provider
