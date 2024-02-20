@@ -73,15 +73,27 @@ spec:
               - Group
   steps:
     # Call Harness Pipelines to create the service infra and other things
+    - id: log-message
+      name: Log Message
+      action: debug:log
+      input:
+        message: 'Hello, ${{ parameters.gitUser }}!'
+    - id: log-message-2
+      name: Log Message 2
+      action: debug:log
+      input:
+        message: 'Creating your Harness Banking Demo App Environment'
     - id: trigger
-      name: Creating Your Infra for the Service
+      name: Onboarding Harness Banking Demo
       action: trigger:harness-custom-pipeline
       input:
-        url: 'https://app.harness.io/ng/#/account/dh-iBL35SqqpuqJF0yDjpQ/home/orgs/default/projects/CIQuickstart/pipelines/fetchfromcustom/pipeline-studio/?storeType=INLINE'
+        url: 'https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/cd/orgs/default/projects/GIT_FLOW_DEMO/pipelines/Onboarding_Pipeline/pipeline-studio/?repoIdentifier=gitopsdemo&branch=main'
         inputset:
-          provider: ${{ parameters.provider }}
-          db: ${{ parameters.db }}
-          cache: ${{ parameters.cache }}
-          lint: ${{ parameters.lint }}
-          name: ${{ parameters.name }}
-          repository: ${{ parameters.repoUrl }}
+          gitUser: ${{ parameters.gitUser }}
+          triggerPipelines: ${{ parameters.triggerPipelines }}
+        apikey: ${{ parameters.token }}
+    - id: log-message-finished
+      name: Log Message 3
+      action: debug:log
+      input:
+        message: 'Thank you! You are ready to start!'
