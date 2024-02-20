@@ -28,6 +28,11 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
         isPublish:
           title: Do you wish to publish the internal registry?
           type: boolean
