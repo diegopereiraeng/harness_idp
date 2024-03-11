@@ -84,10 +84,11 @@ spec:
       name: Onboarding Harness Banking Demo
       action: trigger:harness-custom-pipeline
       input:
-        url: 'https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/cd/orgs/default/projects/GIT_FLOW_DEMO/pipelines/Onboarding_Pipeline/pipeline-studio/?repoIdentifier=gitopsdemo&branch=main'
+        url: 'https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/module/ci/orgs/SE_Sandbox/projects/Platform_Engineering/pipelines/IDP/pipeline-studio'
         inputset:
           gitUser: ${{ parameters.gitUser }}
           triggerPipelines: ${{ parameters.triggerPipelines }}
+          variable1: ${{ parameters.db }}
         apikey: ${{ parameters.token }}
     - id: log-message-finished
       name: Log Message 3
