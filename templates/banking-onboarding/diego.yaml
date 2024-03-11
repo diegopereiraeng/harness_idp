@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: dnbservicev1
-  title: Create a DnB Service
+  title: Create a Customer Service
   description: An template for the scaffolder that creates a DnB service
   tags:
     - django
@@ -12,7 +12,7 @@ spec:
   owner: diego.pereira@harness.io
   type: service
   parameters:
-    - title: DnB Service Details
+    - title: Customer Service Details
       required:
         - gitUser
         - triggerPipelines
@@ -81,7 +81,7 @@ spec:
       input:
         message: 'Creating your Harness Banking Demo App Environment'
     - id: trigger
-      name: Onboarding Harness Banking Demo
+      name: Onboarding Harness IDP Demo
       action: trigger:harness-custom-pipeline
       input:
         url: 'https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/module/ci/orgs/SE_Sandbox/projects/Platform_Engineering/pipelines/IDP/pipeline-studio'
