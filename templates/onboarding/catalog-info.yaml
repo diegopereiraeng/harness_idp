@@ -71,3 +71,77 @@ spec:
         url: ${{ steps.trigger.output.PipelineUrl }}
       - title: GitUser
         url: ${{ parameters.gitUser }}
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: onboarding-banking-2
+  title: "Banking Demo Onboarding 2"
+  description: Setup Demo Environment for Banking Demo
+  tags:
+    - banking-demo
+    - javascript
+    - platform-demo
+    - feature-flags
+    - ci
+    - cd
+  links:
+    - url: https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/home/orgs/default/projects/GIT_FLOW_DEMO/details
+      title: Project Details
+      icon: dashboard
+spec:
+  owner: diego.pereira@harness.io
+  type: service
+  parameters:
+    - title: Onboarding your Harness Banking Demo App Environment
+      required:
+        - gitUser
+        - triggerPipelines
+      properties:
+        gitUser:
+          type: string
+          title: GitHub User
+          description: GitHub User
+          default: ''
+        triggerPipelines:
+          type: string
+          title: Trigger Pipelines
+          description: Should it Trigger Pipelines? (true/false)
+          enum: ["true", "false"]
+          default: 'true'
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: log-message
+      name: Log Message
+      action: debug:log
+      input:
+        message: 'Hello, ${{ parameters.gitUser }}!'
+    - id: log-message-2
+      name: Log Message 2
+      action: debug:log
+      input:
+        message: 'Creating your Harness Banking Demo App Environment'
+    - id: trigger
+      name: Onboarding Harness Banking Demo
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://app.harness.io/ng/account/6_vVHzo9Qeu9fXvj-AcbCQ/cd/orgs/default/projects/GIT_FLOW_DEMO/pipelines/Onboarding_Pipeline/pipeline-studio/?repoIdentifier=gitopsdemo&branch=main'
+        inputset:
+          gitUser: ${{ parameters.gitUser }}
+          triggerPipelines: ${{ parameters.triggerPipelines }}
+        apikey: ${{ parameters.token }}
+    - id: log-message-finished
+      name: Log Message 3
+      action: debug:log
+      input:
+        message: 'Thank you! You are ready to start!'
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+      - title: GitUser
+        url: ${{ parameters.gitUser }}
